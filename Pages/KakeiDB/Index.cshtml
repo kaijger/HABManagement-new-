@@ -2,13 +2,13 @@
 @model HABManagement.Pages.KakeiDB.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "家計簿";
 }
 
-<h1>Index</h1>
+<h1>家計簿</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">新規作成</a>
 </p>
 <table class="table">
     <thead>
@@ -56,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.Memo)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.ID">編集</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">詳細</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">削除</a>
             </td>
         </tr>
 }
