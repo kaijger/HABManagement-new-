@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HABManagement.Data;
 using HABManagement.Models;
+using Microsoft.Data.SqlClient;
 
 namespace HABManagement.Pages.FoodDB
 {
@@ -20,13 +22,49 @@ namespace HABManagement.Pages.FoodDB
         }
 
         public IList<Food> Food { get;set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+        public string DateSort { get; set; }
+        public string ExpiryDateSort { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.Food != null)
+            var reizouko = from m in _context.Food
+                           select m;
+
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                Food = await _context.Food.ToListAsync();
+                reizouko = reizouko.Where(s => s.Name.Contains(SearchString));
             }
+
+            // using System;
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            ExpiryDateSort = sortOrder == "ExpiryDate" ? "expirydate_desc" : "ExpiryDate";
+            IQueryable<Food> itemsIQ = from s in _context.Food
+                                             select s;
+
+            switch (sortOrder)
+            {
+                case "Date":
+                    itemsIQ = itemsIQ.OrderBy(s => s.Date);
+                    break;
+                case "date_desc":
+                    itemsIQ = itemsIQ.OrderByDescending(s => s.Date);
+                    break;
+                case "ExpiryDate":
+                    itemsIQ = itemsIQ.OrderBy(s => s.ExpiryDate);
+                    break;
+                case "expirydate_desc":
+                    itemsIQ = itemsIQ.OrderByDescending(s => s.ExpiryDate);
+                    break;
+                default:
+                    itemsIQ = itemsIQ.OrderBy(s => s.Date);
+                    break;
+            }
+
+
+
+            Food = await itemsIQ.AsNoTracking().ToListAsync();
         }
     }
 }

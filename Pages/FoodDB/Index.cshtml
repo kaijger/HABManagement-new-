@@ -10,6 +10,13 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <p>
+        Name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -21,9 +28,15 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Food[0].Date)
+                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    ▲▼
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Food[0].ExpiryDate)
+                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.ExpiryDateSort">
+                    ▲▼
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Food[0].Memo)
