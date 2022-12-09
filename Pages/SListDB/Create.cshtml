@@ -5,33 +5,33 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>新規作成</h1>
 
-<h4>SList</h4>
+<h4>買物リスト</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="SList.Name" class="control-label"></label>
+                <label asp-for="SList.Name" class="control-label">名前</label>
                 <input asp-for="SList.Name" class="form-control" />
                 <span asp-validation-for="SList.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SList.Memo" class="control-label"></label>
+                <label asp-for="SList.Memo" class="control-label">メモ</label>
                 <input asp-for="SList.Memo" class="form-control" />
                 <span asp-validation-for="SList.Memo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="作成" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">買物リストに戻る</a>
 </div>
 
 @section Scripts {
