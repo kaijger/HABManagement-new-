@@ -28,49 +28,43 @@ namespace HABManagement.Pages.FoodDB
         public string ExpiryDateSort { get; set; }
 
         public async Task OnGetAsync(string sortOrder)
-        {
-            var reizouko = from m in _context.Food
-                           select m;
-
+        { 
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             ExpiryDateSort = sortOrder == "ExpiryDate" ? "expirydate_desc" : "ExpiryDate";
+
             IQueryable<Food> itemsIQ = from s in _context.Food
+                                       where s.Name == SearchString
                                        select s;
+            IQueryable<Food> itemIQ = from s in _context.Food
+                                       select s;
+
+            switch (sortOrder)
+            {
+                case "Date":
+                    itemsIQ = itemsIQ.OrderBy(s => s.Date);
+                    break;
+                case "date_desc":
+                    itemsIQ = itemsIQ.OrderByDescending(s => s.Date);
+                    break;
+                case "ExpiryDate":
+                    itemsIQ = itemsIQ.OrderBy(s => s.ExpiryDate);
+                    break;
+                case "expirydate_desc":
+                    itemsIQ = itemsIQ.OrderByDescending(s => s.ExpiryDate);
+                    break;
+                default:
+                    itemsIQ = itemsIQ.OrderBy(s => s.Date);
+                    break;
+            }
 
             if (!string.IsNullOrEmpty(SearchString))
             {
-                reizouko = reizouko.Where(s => s.Name.Contains(SearchString));
-                Food = await reizouko.ToListAsync();
+                Food = await itemsIQ.AsNoTracking().ToListAsync();
             }
             else
             {
-                switch (sortOrder)
-                {
-                    case "Date":
-                        itemsIQ = itemsIQ.OrderBy(s => s.Date);
-                        break;
-                    case "date_desc":
-                        itemsIQ = itemsIQ.OrderByDescending(s => s.Date);
-                        break;
-                    case "ExpiryDate":
-                        itemsIQ = itemsIQ.OrderBy(s => s.ExpiryDate);
-                        break;
-                    case "expirydate_desc":
-                        itemsIQ = itemsIQ.OrderByDescending(s => s.ExpiryDate);
-                        break;
-                    default:
-                        itemsIQ = itemsIQ.OrderBy(s => s.Date);
-                        break;
-                }
-
-
-
-                Food = await itemsIQ.AsNoTracking().ToListAsync();
+                Food = await itemIQ.AsNoTracking().ToListAsync();
             }
-
-           
-            
-            
         }
     }
 }

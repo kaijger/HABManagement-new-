@@ -5,44 +5,44 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>詳細</h1>
 
 <div>
-    <h4>Kakei</h4>
+    <h4>家計簿</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Kakei.Balance)
+            支出・収入
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Kakei.Balance)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Kakei.Date)
+            日付
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Kakei.Date)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Kakei.Price)
+            価格
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Kakei.Price)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Kakei.Category)
+           支出カテゴリー
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Kakei.Category)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Kakei.Category2)
+            収入カテゴリー
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Kakei.Category2)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Kakei.Memo)
+             メモ
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Kakei.Memo)
@@ -50,6 +50,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Kakei?.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Kakei?.ID">編集</a> |
+    <a asp-page="./Index">一覧へ戻る</a>
 </div>
