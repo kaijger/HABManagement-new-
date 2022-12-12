@@ -34,12 +34,8 @@ namespace HABManagement.Pages.KakeiDB
             if (!string.IsNullOrEmpty(SearchString))
             {
                 kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
-                Kakei = await kakeis.ToListAsync();
             }
-            if (_context.Kakei != null)
-            {
-                Kakei = await _context.Kakei.ToListAsync();
-            }
+            Kakei = await kakeis.ToListAsync();
         }
     }
 }
