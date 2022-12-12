@@ -12,8 +12,8 @@
 </p>
 <form>
     <p>
-        Name: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
+        名前: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="検索" />
     </p>
 </form>
 
@@ -21,25 +21,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].Name)
+                @Html.DisplayNameFor(model => model)名前
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].Num)
+                @Html.DisplayNameFor(model => model)個数
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].Date)
+                @Html.DisplayNameFor(model => model)日付
                 <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
                     ▲▼
                 </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].ExpiryDate)
+                @Html.DisplayNameFor(model => model)有効期限
                 <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.ExpiryDateSort">
                     ▲▼
                 </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Food[0].Memo)
+                @Html.DisplayNameFor(model => model)メモ
             </th>
             <th></th>
         </tr>
@@ -54,7 +54,7 @@
                 @Html.DisplayFor(modelItem => item.Num)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @Html.DisplayFor(modelItem =>item.Date)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ExpiryDate)
