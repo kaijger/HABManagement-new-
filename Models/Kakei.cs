@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HABManagement.Models
 {
@@ -13,5 +14,6 @@ namespace HABManagement.Models
         public string Category { get; set; } = string.Empty;
         public string Category2 { get; set; } = string.Empty;
         public string? Memo { get; set; } = string.Empty;
+
     }
 }
