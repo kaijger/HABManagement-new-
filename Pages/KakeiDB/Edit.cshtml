@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Kakei.ID" />
             <div class="form-group">
-                <label asp-for="Kakei.Balance" class="control-label"></label>
+                <label asp-for="Kakei.Balance" class="control-label">支出・収入</label>
             </div>
             <select asp-for="Kakei.Balance" class="form-group">
                 <option value="">--Please choose an option--</option>
@@ -24,17 +24,17 @@
                 <span asp-validation-for="Kakei.Balance" class="text-danger"></span>
             </select>
             <div class="form-group">
-                <label asp-for="Kakei.Date" class="control-label"></label>
+                <label asp-for="Kakei.Date" class="control-label">日付</label>
                 <input asp-for="Kakei.Date" class="form-control" />
                 <span asp-validation-for="Kakei.Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kakei.Price" class="control-label"></label>
+                <label asp-for="Kakei.Price" class="control-label">価格</label>
                 <input asp-for="Kakei.Price" class="form-control" />
                 <span asp-validation-for="Kakei.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kakei.Category" class="control-label"></label>
+                <label asp-for="Kakei.Category" class="control-label">カテゴリー</label>
             </div>
             <select asp-for="Kakei.Category" class="form-group">
                 <option value="">--Please choose an option--</option>
@@ -52,7 +52,7 @@
                 <span asp-validation-for="Kakei.Category" class="text-danger"></span>
             </select>
             <div class="form-group">
-                <label asp-for="Kakei.Category2" class="control-label"></label>
+                <label asp-for="Kakei.Category2" class="control-label">カテゴリー2</label>
             </div>
             <select asp-for="Kakei.Category2" class="form-group">
                 <option value="">--Please choose an option--</option>
@@ -64,7 +64,7 @@
                 <span asp-validation-for="Kakei.Category2" class="text-danger"></span>
             </select>
             <div class="form-group">
-                <label asp-for="Kakei.Memo" class="control-label"></label>
+                <label asp-for="Kakei.Memo" class="control-label">メモ</label>
                 <input asp-for="Kakei.Memo" class="form-control" />
                 <span asp-validation-for="Kakei.Memo" class="text-danger"></span>
             </div>
@@ -76,7 +76,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">一覧へ戻る</a>
 </div>
 
 @section Scripts {
