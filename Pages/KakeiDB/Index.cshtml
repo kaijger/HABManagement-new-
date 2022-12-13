@@ -11,10 +11,12 @@
     <a asp-page="Create">新規作成</a>
 </p>
 <form>
-    <p>
-        Name: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
+    <select asp-for="SearchString" class="form-group">
+        <option value="null">--Please choose an option--</option>
+        <option value="支出">支出</option>
+        <option value="収入">収入</option>
+    </select>
+    <input type="submit" value="検索" class="btn btn-primary" />
 </form>
 
 <table class="table">
@@ -30,10 +32,7 @@
                 価格
             </th>
             <th>
-                支出カテゴリー
-            </th>
-            <th>
-                収入カテゴリー
+                カテゴリー
             </th>
             <th>
                 メモ
@@ -55,9 +54,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category2)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Memo)

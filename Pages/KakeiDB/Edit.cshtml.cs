@@ -47,6 +47,19 @@ namespace HABManagement.Pages.KakeiDB
             {
                 return Page();
             }
+            if (Kakei.Category == "null")
+            {
+                Kakei.Category = Kakei.Category2;
+            }
+            if (Kakei.Category2 == "null")
+            {
+                Kakei.Category2 = "";
+            }
+            if (Kakei.Category == "null" || Kakei.Category2 == "null")
+            {
+                Kakei.Category = "";
+                Kakei.Category2 = "";
+            }
 
             _context.Attach(Kakei).State = EntityState.Modified;
 

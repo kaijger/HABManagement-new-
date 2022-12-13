@@ -31,7 +31,11 @@ namespace HABManagement.Pages.KakeiDB
             var kakeis = from m in _context.Kakei
                          select m;
 
-            if (!string.IsNullOrEmpty(SearchString))
+            if (SearchString == "収入")
+            {
+                kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
+            }
+            if (SearchString == "支出")
             {
                 kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
             }
