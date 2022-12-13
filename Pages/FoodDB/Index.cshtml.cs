@@ -33,10 +33,14 @@ namespace HABManagement.Pages.FoodDB
             ExpiryDateSort = sortOrder == "ExpiryDate" ? "expirydate_desc" : "ExpiryDate";
 
             IQueryable<Food> itemsIQ = from s in _context.Food
-                                       where s.Name == SearchString
-                                       select s;
-            IQueryable<Food> itemIQ = from s in _context.Food
-                                       select s;
+                                      select s;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                itemsIQ = from s in _context.Food
+                          where s.Name == SearchString
+                          select s;
+            }
+            
 
             switch (sortOrder)
             {
@@ -57,14 +61,9 @@ namespace HABManagement.Pages.FoodDB
                     break;
             }
 
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                Food = await itemsIQ.AsNoTracking().ToListAsync();
-            }
-            else
-            {
-                Food = await itemIQ.AsNoTracking().ToListAsync();
-            }
+            
+            Food = await itemsIQ.AsNoTracking().ToListAsync();
+            
         }
     }
 }
