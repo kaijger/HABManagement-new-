@@ -8,6 +8,15 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<HABManagementContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HABManagementContext") ?? throw new InvalidOperationException("Connection string 'HABManagementContext' not found.")));
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".AdventureWorks.Session";
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +34,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseSession();
+
 app.MapRazorPages();
+app.MapDefaultControllerRoute();
+
 
 app.Run();
