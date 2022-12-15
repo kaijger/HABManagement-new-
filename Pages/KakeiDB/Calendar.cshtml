@@ -1,0 +1,22 @@
+﻿@page
+@model HABManagement.Pages.KakeiDB.testModel
+
+@{
+    ViewData["Title"] = "test";
+}
+
+<h1>test</h1>
+
+<h4>Kakei</h4>
+<hr />
+<div class="calendar-container">
+    <iframe src="https://calendar.google.com/calendar/embed?src=addressbook%23contacts%40group.v.calendar.google.com&ctz=Asia%2FTokyo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
