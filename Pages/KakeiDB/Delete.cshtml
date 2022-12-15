@@ -2,7 +2,7 @@
 @model HABManagement.Pages.KakeiDB.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "削除";
 }
 
 <h1>削除</h1>
@@ -47,6 +47,6 @@
     <form method="post">
         <input type="hidden" asp-for="Kakei.ID" />
         <input type="submit" value="削除" class="btn btn-danger" /> |
-        <a asp-page="./Index">一覧へ戻る</a>
+        <a asp-page="./Index">家計簿に戻る</a>
     </form>
 </div>

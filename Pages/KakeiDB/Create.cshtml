@@ -2,7 +2,7 @@
 @model HABManagement.Pages.KakeiDB.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "新規作成";
 }
 
 <h1>新規作成</h1>
@@ -59,7 +59,7 @@
                 <option value="おこづかい">おこづかい</option>
                 <option value="賞与">賞与</option>
                 <option value="副業">副業</option>
-                <option value="投資">臨時収入</option>
+                <option value="臨時収入">臨時収入</option>
                 <span asp-validation-for="Kakei.Category2" class="text-danger"></span>
             </select>
             <div class="form-group">
@@ -75,7 +75,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">一覧へ戻る</a>
+    <a asp-page="Index">家計簿に戻る</a>
 </div>
 
 @section Scripts {
