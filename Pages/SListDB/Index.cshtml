@@ -5,38 +5,44 @@
     ViewData["Title"] = "Index";
 }
 
+<body style="background:#AFEEEE;">
+</body>
+
 <h1>買物リスト</h1>
 
 <p>
     <a asp-page="Create">新規作成</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <label>名前</label>
-            </th>
-            <th>
-                <label>メモ</label>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.SList) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Memo)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">編集</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">詳細</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">削除</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<hr width="100%" size="10" noshade="" color="#004970">
+<div style="background:#d5eded;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label>名前</label>
+                </th>
+                <th>
+                    <label>メモ</label>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.SList) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Memo)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">編集</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">詳細</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">削除</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

@@ -5,6 +5,9 @@
     ViewData["Title"] = "家計簿";
 }
 
+<body style="background:#AFEEEE;">
+</body>
+
 <h1>家計簿</h1>
 
 <p>
@@ -19,51 +22,56 @@
     <input type="submit" value="検索" class="btn btn-primary" />
 </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                支出・収入
-            </th>
-            <th>
-                日付
-            </th>
-            <th>
-                価格
-            </th>
-            <th>
-                カテゴリー
-            </th>
-            <th>
-                メモ
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Kakei) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Balance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Memo)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">編集</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">詳細</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">削除</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<hr width="100%" size="10" noshade="" color="#004970">
+<div style="background:#d5eded;">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    支出・収入
+                </th>
+                <th>
+                    日付
+                </th>
+                <th>
+                    価格
+                </th>
+                <th>
+                    カテゴリー
+                </th>
+                <th>
+                    メモ
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Kakei) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Memo)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">編集</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">詳細</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">削除</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

@@ -3,19 +3,49 @@
 @{
     ViewData["Title"] = "ハブマネ";
 }
+<head>
+    <link rel="stylesheet" href="Index.cshtml.css">
+</head>
 
-<div class="text-center">
-    <h1 class="display-4">HABMANAGEMENT</h1>
-    <ul class="navbar-nav flex-grow-1">
-        
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/KakeiDB/Index">家計簿</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/FoodDB/Index">冷蔵庫管理</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/SListDB/Index">買い物リスト</a>
-        </li>          
-        </ul>
+<body style="background:#AFEEEE;">
+</body>
+
+<div style="padding:80px; margin:5px; border:20px solid #004970; border-radius:5px;">
+    <div class="text-center">
+        <font color="#192f60">
+            <h1 class="display-4">
+                HABManagement
+            </h1>
+            <h2>
+                ～暮らしの管理～
+            </h2>
+            <h3>
+                下のボタンを押して下さい
+            </h3>
+        </font>
+
+            <ul class="navbar-nav flex-grow-1">
+    
+                <li class="nav-item">
+                    <p>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-area="" asp-page="/KakeiDB/Index">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">家計簿</font>
+                        </a>
+                    <p/>
+                </li>
+                <li class="nav-item">
+                    <p>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-area="" asp-page="/FoodDB/Index">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#4169e1">冷蔵庫管理</font>
+                        </a>
+                    </p>
+                </li>
+                <li class="nav-item">
+                        <a class="btn text-white" style="background-color:#fafafa"  asp-area="" asp-page="/SListDB/Index">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#89c997">買い物リスト</font>
+                        </a>
+                </li>          
+            </ul>
+    
+    </div>
 </div>
