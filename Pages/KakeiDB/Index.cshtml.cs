@@ -9,6 +9,8 @@ using HABManagement.Data;
 using HABManagement.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using static System.Net.Mime.MediaTypeNames;
+
 
 namespace HABManagement.Pages.KakeiDB
 {
@@ -16,17 +18,17 @@ namespace HABManagement.Pages.KakeiDB
     {
         private readonly HABManagement.Data.HABManagementContext _context;
 
-        public IndexModel(HABManagement.Data.HABManagementContext context)
+        public IndexModel(HABManagement.Data.HABManagementContext context, ILogger<IndexModel> logger)
         {
             _context = context;
         }
         public IList<Kakei> Kakei { get; set; } = default!;
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
-        
+        public string? DateSort { get; set; }
 
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
             var kakeis = from m in _context.Kakei
                          select m;
@@ -39,7 +41,26 @@ namespace HABManagement.Pages.KakeiDB
             {
                 kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
             }
-            Kakei = await kakeis.ToListAsync();
+
+
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
+            
+             switch (sortOrder)
+            {
+                case "Date":
+                    kakeis = kakeis.OrderBy(s => s.Date);
+                    break;
+                case "date_desc":
+                    kakeis = kakeis.OrderByDescending(s => s.Date);
+                    break;
+                default:
+                    kakeis = kakeis.OrderBy(s => s.Date);
+                    break;
+            }
+
+            Kakei = await kakeis.AsNoTracking().ToListAsync();
+
         }
     }
 }
