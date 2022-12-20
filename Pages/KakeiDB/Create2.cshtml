@@ -10,7 +10,7 @@
 <h4>家計簿</h4>
 <form action="Create">
     <div class="form-group">
-        <input type="submit" value="収入画面へ" class="btn btn-primary" />
+        <input type="submit" value="支出画面へ" class="btn btn-primary" />
     </div>
 </form>
 <hr />
@@ -29,7 +29,7 @@
                 <span asp-validation-for="Kakei.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kakei.Category" class="control-label">カテゴリー</label>
+                <label asp-for="Kakei.Category" class="control-label">収入カテゴリー</label>
             </div>
             <select asp-for="Kakei.Category" class="form-group">
                 <option value="null">--Please choose an option--</option>
