@@ -5,7 +5,10 @@
     ViewData["Title"] = "編集";
 }
 
-<h1>編集</h1>
+<body style="background:#AFEEEE;">
+</body>
+
+<h1>支出編集画面</h1>
 
 <h4>家計簿</h4>
 <hr />
@@ -14,15 +17,6 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Kakei.ID" />
-            <div class="form-group">
-                <label asp-for="Kakei.Balance" class="control-label">支出・収入</label>
-            </div>
-            <select asp-for="Kakei.Balance" class="form-group">
-                <option value="">--Please choose an option--</option>
-                <option value="支出">支出</option>
-                <option value="収入">収入</option>
-                <span asp-validation-for="Kakei.Balance" class="text-danger"></span>
-            </select>
             <div class="form-group">
                 <label asp-for="Kakei.Date" class="control-label">日付</label>
                 <input asp-for="Kakei.Date" class="form-control" />
@@ -34,7 +28,7 @@
                 <span asp-validation-for="Kakei.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Kakei.Category" class="control-label">支出カテゴリー</label>
+                <label asp-for="Kakei.Category" class="control-label">カテゴリー</label>
             </div>
             <select asp-for="Kakei.Category" class="form-group">
                 <option value="null">--Please choose an option--</option>
@@ -50,18 +44,6 @@
                 <option value="通信費">通信費</option>
                 <option value="住居費">住居費</option>
                 <span asp-validation-for="Kakei.Category" class="text-danger"></span>
-            </select>
-            <div class="form-group">
-                <label asp-for="Kakei.Category2" class="control-label">収入カテゴリー</label>
-            </div>
-            <select asp-for="Kakei.Category2" class="form-group">
-                <option value="null">--Please choose an option--</option>
-                <option value="給料">給料</option>
-                <option value="おこづかい">おこづかい</option>
-                <option value="賞与">賞与</option>
-                <option value="副業">副業</option>
-                <option value="投資">臨時収入</option>
-                <span asp-validation-for="Kakei.Category2" class="text-danger"></span>
             </select>
             <div class="form-group">
                 <label asp-for="Kakei.Memo" class="control-label">メモ</label>

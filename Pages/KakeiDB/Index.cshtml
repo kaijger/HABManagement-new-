@@ -73,7 +73,8 @@
                     @Html.DisplayFor(modelItem => item.Memo)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">編集</a> |
+                    <a asp-page="./Edit" asp-route-id="@item.ID">支出編集</a> |
+                        <a asp-page="./Edit2" asp-route-id="@item.ID">収入編集</a> |
                     <a asp-page="./Details" asp-route-id="@item.ID">詳細</a> |
                     <a asp-page="./Delete" asp-route-id="@item.ID">削除</a>
                 </td>

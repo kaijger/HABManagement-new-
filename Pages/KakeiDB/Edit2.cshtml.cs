@@ -11,11 +11,11 @@ using HABManagement.Models;
 
 namespace HABManagement.Pages.KakeiDB
 {
-    public class EditModel : PageModel
+    public class Edit2Model : PageModel
     {
         private readonly HABManagement.Data.HABManagementContext _context;
 
-        public EditModel(HABManagement.Data.HABManagementContext context)
+        public Edit2Model(HABManagement.Data.HABManagementContext context)
         {
             _context = context;
         }
@@ -43,13 +43,17 @@ namespace HABManagement.Pages.KakeiDB
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (Kakei.Category == "null")
+			if (Kakei.Category == "null")
+			{
+				Kakei.Category = "";
+			}
+			if (Kakei.Balance == "null")
+			{
+				Kakei.Balance = "収入";
+			}
+			if (!ModelState.IsValid)
             {
-                Kakei.Category = "";
-            }
-            if (Kakei.Balance == "null")
-            {
-                Kakei.Balance = "支出";
+                return Page();
             }
 
             _context.Attach(Kakei).State = EntityState.Modified;

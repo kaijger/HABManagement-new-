@@ -32,6 +32,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model)個数
+                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.NumSort">
+                    ▲▼
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model)日付

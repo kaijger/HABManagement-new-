@@ -7,8 +7,8 @@ namespace HABManagement.Models
     {
         public int ID { get; set; }
 
-        public string Balance { get; set; } = string.Empty;
-        [DataType(DataType.Date)]
+        public string Balance { get; set; } = "null";
+		[DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public int Price { get; set; }
         public string Category { get; set; } = string.Empty;
