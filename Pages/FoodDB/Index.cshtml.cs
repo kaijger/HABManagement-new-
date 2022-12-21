@@ -22,6 +22,7 @@ namespace HABManagement.Pages.FoodDB
             _logger = logger;
         }
 
+        
         public const string SessionKeyName = "_Name";
 
         public IList<Food> Food { get;set; } = default!;
@@ -29,12 +30,17 @@ namespace HABManagement.Pages.FoodDB
         public string? SearchString { get; set; }
         public string? DateSort { get; set; }
         public string? ExpiryDateSort { get; set; }
-        public string test = "";
+
         public string? NumSort { get; set; }
 
+        
         public async Task OnGetAsync(string sortOrder)
         {
-            
+            string yr = DateTime.Today.Year.ToString();
+            string mn = DateTime.Today.Month.ToString();
+            string dt = DateTime.Today.Day.ToString();
+            string datenow = string.Format("{0}-{1}-{2}", yr, mn, dt);
+
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             ExpiryDateSort = sortOrder == "ExpiryDate" ? "expirydate_desc" : "ExpiryDate";
             NumSort = sortOrder == "Num" ? "num_desc" : "Num";
@@ -46,13 +52,12 @@ namespace HABManagement.Pages.FoodDB
                 itemsIQ = from s in _context.Food
                           where s.Name == SearchString
                           select s;
-                test = SearchString;
             }
             
 
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKeyName)))
             {
-                HttpContext.Session.SetString(SessionKeyName, test);
+                HttpContext.Session.SetString(SessionKeyName, datenow);
 
             }
             var name = HttpContext.Session.GetString(SessionKeyName);

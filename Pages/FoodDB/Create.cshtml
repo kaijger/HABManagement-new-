@@ -23,12 +23,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Food.Num" class="control-label">個数</label>
-                <input asp-for="Food.Num" class="form-control" />
+                <input asp-for="Food.Num" class="form-control" value="1"/>
                 <span asp-validation-for="Food.Num" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Food.Date" class="control-label">日付</label>
-                <input asp-for="Food.Date" class="form-control" />
+                <input asp-for="Food.Date" class="form-control" value="@HttpContext.Session.GetString(IndexModel.SessionKeyName)" />
                 <span asp-validation-for="Food.Date" class="text-danger"></span>
             </div>
             <div class="form-group">
