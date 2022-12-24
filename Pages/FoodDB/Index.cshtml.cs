@@ -16,14 +16,10 @@ namespace HABManagement.Pages.FoodDB
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly HABManagement.Data.HABManagementContext _context;
-        public IndexModel(HABManagement.Data.HABManagementContext context, ILogger<IndexModel> logger)
+        public IndexModel(HABManagement.Data.HABManagementContext context)
         {
             _context = context;
-            _logger = logger;
         }
-
-        
-        public const string SessionKeyName = "_Name";
 
         public IList<Food> Food { get;set; } = default!;
         [BindProperty(SupportsGet = true)]
@@ -36,11 +32,6 @@ namespace HABManagement.Pages.FoodDB
         
         public async Task OnGetAsync(string sortOrder)
         {
-            string yr = DateTime.Today.Year.ToString();
-            string mn = DateTime.Today.Month.ToString();
-            string dt = DateTime.Today.Day.ToString();
-            string datenow = string.Format("{0}-{1}-{2}", yr, mn, dt);
-
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             ExpiryDateSort = sortOrder == "ExpiryDate" ? "expirydate_desc" : "ExpiryDate";
             NumSort = sortOrder == "Num" ? "num_desc" : "Num";
@@ -53,17 +44,6 @@ namespace HABManagement.Pages.FoodDB
                           where s.Name == SearchString
                           select s;
             }
-            
-
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKeyName)))
-            {
-                HttpContext.Session.SetString(SessionKeyName, datenow);
-
-            }
-            var name = HttpContext.Session.GetString(SessionKeyName);
-
-            _logger.LogInformation("Session Name: {Name}", name);
-
 
             switch (sortOrder)
             {

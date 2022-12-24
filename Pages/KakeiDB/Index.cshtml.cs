@@ -18,7 +18,7 @@ namespace HABManagement.Pages.KakeiDB
     {
         private readonly HABManagement.Data.HABManagementContext _context;
 
-        public IndexModel(HABManagement.Data.HABManagementContext context, ILogger<IndexModel> logger)
+        public IndexModel(HABManagement.Data.HABManagementContext context)
         {
             _context = context;
         }
