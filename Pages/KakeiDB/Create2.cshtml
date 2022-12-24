@@ -4,6 +4,12 @@
 @{
     ViewData["Title"] = "Create2";
 }
+@{
+    string yr = DateTime.Today.Year.ToString();
+    string mn = DateTime.Today.Month.ToString();
+    string dt = DateTime.Today.Day.ToString();
+    string datenow = string.Format("{0}-{1}-{2}", yr, mn, dt);
+}
 
 <h1>収入</h1>
 
@@ -20,7 +26,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Kakei.Date" class="control-label">日付</label>
-                <input asp-for="Kakei.Date" class="form-control" value="@HttpContext.Session.GetString(CreateModel.SessionKeyName)" />
+                <input asp-for="Kakei.Date" class="form-control" value="@datenow" />
                 <span asp-validation-for="Kakei.Date" class="text-danger"></span>
             </div>
             <div class="form-group">
