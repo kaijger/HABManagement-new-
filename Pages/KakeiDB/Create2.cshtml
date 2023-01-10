@@ -8,6 +8,14 @@
     string yr = DateTime.Today.Year.ToString();
     string mn = DateTime.Today.Month.ToString();
     string dt = DateTime.Today.Day.ToString();
+    if (Int32.Parse(mn) < 10)
+    {
+        mn = "0" + mn;
+    }
+    if (Int32.Parse(dt) < 10)
+    {
+        dt = "0" + dt;
+    }
     string datenow = string.Format("{0}-{1}-{2}", yr, mn, dt);
 }
 
