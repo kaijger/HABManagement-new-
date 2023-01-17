@@ -17,6 +17,106 @@
 <p>
     <a asp-page="Calendar">カレンダー</a>
 </p>
+
+<p>
+    <details style="background-color:#d5eded">
+        <summary>収支グラフ</summary>
+        @{
+            var i = 0;
+            string[] date = new string[12];
+            int[] expenses = new int[12];
+            int[] income = new int[12];
+        }
+        @while (i < 12)
+        {
+            int y = DateTime.Today.Year;
+            int m = DateTime.Today.Month;
+            int n = i;
+            if (m <= n)
+            {
+                n -= m;
+                m = 12 - n;
+                y -= 1;
+            }
+            else
+            {
+                m -= n;
+            }
+
+            string datenow = string.Format("{0}-{1}", y, m);
+            string reyr = "";
+            string remn = "";
+            string monthnow = "";
+
+            string balance1 = "支出";
+            string balance2 = "収入";
+            int sum1 = 0;
+            int sum2 = 0;
+
+            foreach (var a in Model.Kakei)
+            {
+                reyr = a.Date.Year.ToString();
+                remn = a.Date.Month.ToString();
+                monthnow = string.Format("{0}-{1}", reyr, remn);
+                if (a.Balance == balance1 && monthnow == datenow)
+                {
+                    sum1 += a.Price;
+                }
+                else if (a.Balance == balance2 && monthnow == datenow)
+                {
+                    sum2 += a.Price;
+                }
+            }
+
+            date[i] = datenow;
+            expenses[i] = sum1;
+            income[i] = sum2;
+            i++;
+        }
+
+        <canvas id="myChart" height="120" style="background:white; padding:10px; margin:0px; border:5px solid #d5eded; border-radius:5px;"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+            <script>
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['@date[11]', '@date[10]', '@date[9]', '@date[8]', '@date[7]', '@date[6]', '@date[5]', '@date[4]', '@date[3]', '@date[2]', '@date[1]', '@date[0]'],
+                        datasets: [
+                            {
+                                label: '支出',
+                                data: [@expenses[11], @expenses[10], @expenses[9], @expenses[8], @expenses[7], @expenses[6], @expenses[5], @expenses[4], @expenses[3], @expenses[2], @expenses[1], @expenses[0]],
+                                backgroundColor: "rgba(219,39,91,0.7)"
+                            }, {
+                                label: '収入',
+                                data: [@income[11], @income[10], @income[9], @income[8], @income[7], @income[6], @income[5], @income[4], @income[3], @income[2], @income[1], @income[0]],
+                                backgroundColor: "rgba(130,201,169)"
+                            }
+                        ]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: '月合計　収支'
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    suggestedMax: 50000,
+                                    suggestedMin: 0,
+                                    stepSize: 20000,
+                                    callback: function (value, index, values) {
+                                        return value + '円'
+                                    }
+                                }
+                            }]
+                        },
+                        responsive: true,
+                    },
+                });
+            </script>
+    </details>
+</p>
 <form>
     <select asp-for="SearchString" class="form-group">
         <option value="null">--Please choose an option--</option>
