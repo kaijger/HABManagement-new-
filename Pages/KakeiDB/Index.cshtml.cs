@@ -17,31 +17,36 @@ namespace HABManagement.Pages.KakeiDB
     public class IndexModel : PageModel
     {
         private readonly HABManagement.Data.HABManagementContext _context;
-
-        public IndexModel(HABManagement.Data.HABManagementContext context)
+        private readonly ILogger<IndexModel> _logger;
+        public IndexModel(HABManagement.Data.HABManagementContext context, ILogger<IndexModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
         public IList<Kakei> Kakei { get; set; } = default!;
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
         public string? DateSort { get; set; }
 
+        public const string SessionKeyName = "Item";
+
 
         public async Task OnGetAsync(string sortOrder)
         {
             var kakeis = from m in _context.Kakei
                          select m;
-
-            if (SearchString == "収入")
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
+                HttpContext.Session.SetString(SessionKeyName, SearchString);
+                if (SearchString == "収入")
+                {
+                    kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
+                }
+                if (SearchString == "支出")
+                {
+                    kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
+                }
             }
-            if (SearchString == "支出")
-            {
-                kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
-            }
-
 
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
 

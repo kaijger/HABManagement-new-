@@ -139,7 +139,7 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model)日付
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.DateSort" asp-route-SearchString="@HttpContext.Session.GetString("Item")">
                         ▲▼
                     </a>
                 </th>

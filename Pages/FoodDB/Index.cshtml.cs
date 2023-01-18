@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using HABManagement.Data;
 using HABManagement.Models;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 
 namespace HABManagement.Pages.FoodDB
 {
@@ -16,9 +17,10 @@ namespace HABManagement.Pages.FoodDB
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly HABManagement.Data.HABManagementContext _context;
-        public IndexModel(HABManagement.Data.HABManagementContext context)
+        public IndexModel(HABManagement.Data.HABManagementContext context, ILogger<IndexModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IList<Food> Food { get;set; } = default!;
@@ -29,7 +31,9 @@ namespace HABManagement.Pages.FoodDB
 
         public string? NumSort { get; set; }
 
-        
+        public const string SessionKeyName = "Item";
+
+
         public async Task OnGetAsync(string sortOrder)
         {
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
@@ -40,10 +44,12 @@ namespace HABManagement.Pages.FoodDB
                                       select s;
             if (!string.IsNullOrEmpty(SearchString))
             {
+                HttpContext.Session.SetString(SessionKeyName, SearchString);
                 itemsIQ = from s in _context.Food
                           where s.Name == SearchString
                           select s;
             }
+
 
             switch (sortOrder)
             {
