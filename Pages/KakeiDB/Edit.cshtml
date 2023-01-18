@@ -2,7 +2,7 @@
 @model HABManagement.Pages.KakeiDB.EditModel
 
 @{
-    ViewData["Title"] = "編集";
+    ViewData["Title"] = "編集(支出)";
 }
 
 <body style="background:#AFEEEE;">
@@ -60,6 +60,7 @@
 
 <div>
     <a asp-page="./Index">家計簿に戻る</a>
+    <a asp-page="./Edit2" asp-route-id="@Model.Kakei?.ID">収入編集へ</a>
 </div>
 
 @section Scripts {
