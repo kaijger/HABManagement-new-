@@ -4,6 +4,9 @@
 @{
     ViewData["Title"] = "買い物リスト";
 }
+@{
+    int i = 0;
+}
 
 <body style="background:#d8e698;">
 </body>
@@ -48,7 +51,14 @@
                     @Html.DisplayFor(modelItem => item.Memo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Priority)
+                    @while (i < item.Priority)
+                    {
+                        <label style="color:#e697c4; font-size:23px">♥</label>
+                        i++;
+                    }
+                    @{
+                        i = 0;
+                    }
                 </td>
                 <td>
                         <a class="btn text-white" style="background-color:#fafafa" asp-page="./Edit" asp-route-id="@item.ID">

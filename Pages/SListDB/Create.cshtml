@@ -4,6 +4,31 @@
 @{
     ViewData["Title"] = "新規作成";
 }
+<head>
+    <style>
+        .stars span {
+            display: flex; /* 要素をフレックスボックスにする */
+            flex-direction: row-reverse; /* 星を逆順に並べる */
+            justify-content: flex-end; /* 逆順なので、左寄せにする */
+        }
+
+        .stars input[type='radio'] {
+            display: none; /* デフォルトのラジオボタンを非表示にする */
+        }
+
+        .stars label {
+            color: whitesmoke; /* 未選択の星をグレー色に指定 */
+            font-size: 30px; /* 星の大きさを30pxに指定 */
+            padding: 0 5px; /* 左右の余白を5pxに指定 */
+        }
+
+            .stars label:hover,
+            .stars label:hover ~ label,
+            .stars input[type='radio']:checked ~ label {
+                color: #e697c4; /* 選択された星以降をすべて黄色にする */
+            }
+    </style>
+</head>
 
 <body style="background:#c4e697;">
 </body>
@@ -28,8 +53,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="SList.Priority" class="control-label">優先度</label>
-                <input asp-for="SList.Priority" class="form-control" />
-                <span asp-validation-for="SList.Priority" class="text-danger"></span>
+                <div class="stars">
+                    <span>
+                        <input id="review01" type="radio" asp-for="SList.Priority" value="5"><label for="review01">♥</label>
+                        <input id="review02" type="radio" asp-for="SList.Priority" value="4"><label for="review02">♥</label>
+                        <input id="review03" type="radio" asp-for="SList.Priority" value="3"><label for="review03">♥</label>
+                        <input id="review04" type="radio" asp-for="SList.Priority" value="2"><label for="review04">♥</label>
+                        <input id="review05" type="radio" asp-for="SList.Priority" value="1"><label for="review05">♥</label>
+                    </span>
+                </div>
             </div>
             <br />
             <div class="form-group">
