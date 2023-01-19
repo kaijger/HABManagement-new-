@@ -207,7 +207,7 @@
         var prevDisabled = !Model.Kakei.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.Kakei.HasNextPage ? "disabled" : "";
     }
-
+<center>
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex - 1)"
@@ -227,3 +227,5 @@
        class="btn btn-primary @nextDisabled">
         次ページ
     </a>
+</center>
+    
