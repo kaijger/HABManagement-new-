@@ -186,4 +186,24 @@
     }
         </tbody>
     </table>
+    
 </div>
+@{
+        var prevDisabled = !Model.Kakei.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Kakei.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Kakei.PageIndex - 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-primary @prevDisabled">
+        前ページ
+    </a>
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.Kakei.PageIndex + 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-primary @nextDisabled">
+        次ページ
+    </a>
