@@ -17,12 +17,10 @@ namespace HABManagement.Pages.KakeiDB
     public class IndexModel : PageModel
     {
         private readonly HABManagement.Data.HABManagementContext _context;
-        private readonly ILogger<IndexModel> _logger;
         private readonly IConfiguration Configuration;
-        public IndexModel(HABManagement.Data.HABManagementContext context, ILogger<IndexModel> logger, IConfiguration configuration)
+        public IndexModel(HABManagement.Data.HABManagementContext context, IConfiguration configuration)
         {
             _context = context;
-            _logger = logger;
             Configuration = configuration;
         }
         public PaginatedList<Kakei> Kakei { get; set; }
@@ -73,7 +71,7 @@ namespace HABManagement.Pages.KakeiDB
                     kakeis = kakeis.OrderByDescending(s => s.Date);
                     break;
                 default:
-                    kakeis = kakeis.OrderBy(s => s.Date);
+                    kakeis = kakeis.OrderByDescending(s => s.Date);
                     break;
             }
             var pageSize = Configuration.GetValue("PageSize", 4);
