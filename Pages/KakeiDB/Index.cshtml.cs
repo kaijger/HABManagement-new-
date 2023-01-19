@@ -27,9 +27,7 @@ namespace HABManagement.Pages.KakeiDB
 
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
-        public string? DateSort { get; set; }
-
-        public const string SessionKeyName = "Item";
+        public string? sortOrder { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
@@ -38,7 +36,6 @@ namespace HABManagement.Pages.KakeiDB
             string currentFilter, string searchString, int? pageIndex)
         {
             CurrentSort = sortOrder;
-            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             if (searchString != null)
             {
                 pageIndex = 1;
@@ -51,7 +48,6 @@ namespace HABManagement.Pages.KakeiDB
                          select m;
             if (!string.IsNullOrEmpty(SearchString))
             {
-                HttpContext.Session.SetString(SessionKeyName, SearchString);
                 if (SearchString == "収入")
                 {
                     kakeis = kakeis.Where(s => s.Balance.Contains(SearchString));
@@ -64,10 +60,10 @@ namespace HABManagement.Pages.KakeiDB
             
              switch (sortOrder)
             {
-                case "Date":
+                case "DateAsc":
                     kakeis = kakeis.OrderBy(s => s.Date);
                     break;
-                case "date_desc":
+                case "DateDesc":
                     kakeis = kakeis.OrderByDescending(s => s.Date);
                     break;
                 default:
