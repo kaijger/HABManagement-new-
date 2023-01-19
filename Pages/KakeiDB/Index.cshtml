@@ -6,20 +6,24 @@
     ViewData["Title"] = "家計簿";
 }
 
-<body style="background:#AFEEEE;">
+<body style="background:#FEDCBD;">
 </body>
 
 <h1>家計簿</h1>
 
 <p>
-    <a asp-page="Create">新規作成</a>
+    <a class="btn text-white" style="background-color:#fafafa" asp-page="Create">
+        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">新規作成</font>
+    </a>
 </p>
 <p>
-    <a asp-page="Calendar">カレンダー</a>
+    <a class="btn text-white" style="background-color:#fafafa" asp-page="Calendar">
+        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">カレンダー</font>
+    </a>
 </p>
 
 <p>
-    <details style="background-color:#d5eded">
+    <details style="background-color:#ffcc99">
         <summary>収支グラフ</summary>
         @{
             var i = 0;
@@ -123,15 +127,15 @@
         <option value="支出">支出</option>
         <option value="収入">収入</option>
     </select>
-    <input type="submit" value="検索" class="btn btn-primary" />
+    <input type="submit" value="検索" />
     <a class="btn btn-outline-secondary" asp-page="./Index">リセット</a>
 </form>
 
 
 
 
-<hr width="100%" size="10" noshade="" color="#004970">
-<div style="background:#d5eded;">
+
+<div style="background:#ffcc99;">
 
     <table class="table">
         
@@ -177,10 +181,18 @@
                     @Html.DisplayFor(modelItem => item.Memo)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">支出編集</a> |
-                        <a asp-page="./Edit2" asp-route-id="@item.ID">収入編集</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">詳細</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">削除</a>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-page="./Edit" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">支出編集</font>
+                        </a>
+                        <a class ="btn text-white" style="background-color:#fafafa" asp-page="./Edit2" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">収入編集</font>
+                        </a>
+                        <a class="btn text-white" style="background-color:#fafafa"asp-page="./Details" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">詳細</font>
+                        </a>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-page="./Delete" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">削除</font>
+                        </a>
                 </td>
             </tr>
     }

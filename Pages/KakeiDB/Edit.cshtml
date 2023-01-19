@@ -5,7 +5,7 @@
     ViewData["Title"] = "編集(支出)";
 }
 
-<body style="background:#AFEEEE;">
+<body style="background:#FEDCBD;">
 </body>
 
 <h1>支出編集画面</h1>
@@ -51,13 +51,14 @@
                 <input asp-for="Kakei.Memo" class="form-control" />
                 <span asp-validation-for="Kakei.Memo" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="保存" class="btn btn-primary" />
+                <input type="submit" value="保存" />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
     <a asp-page="./Index">家計簿に戻る</a>
     <a asp-page="./Edit2" asp-route-id="@Model.Kakei?.ID">収入編集へ</a>
