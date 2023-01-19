@@ -128,8 +128,12 @@
         <option value="収入">収入</option>
     </select>
     <input type="submit" value="検索" />
-    <a class="btn btn-outline-secondary" asp-page="./Index">リセット</a>
+    <a class="btn text-white" style="background-color:#fafafa" asp-page="./Index">
+        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">リセット</font>
+    </a>
+    
 </form>
+<br />
 
 
 
@@ -209,13 +213,15 @@
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex - 1)"
        asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @prevDisabled">
-        前ページ
+       class="btn text-white @prevDisabled"
+       style="background-color:#fafafa">
+        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">前ページ</font>
     </a>
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex + 1)"
        asp-route-currentFilter="@Model.CurrentFilter"
-       class="btn btn-primary @nextDisabled">
-        次ページ
+       class="btn text-white @nextDisabled"
+       style="background-color:#fafafa">
+        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">次ページ</font>
     </a>
