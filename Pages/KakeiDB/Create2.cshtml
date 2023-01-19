@@ -28,7 +28,7 @@
 <h4>家計簿</h4>
 <form action="Create">
     <div class="form-group">
-        <input type="submit" value="支出画面へ" class="btn btn-primary" />
+        <input type="submit" value="支出画面へ" />
     </div>
 </form>
 <hr />
@@ -63,13 +63,14 @@
                 <input asp-for="Kakei.Memo" class="form-control" />
                 <span asp-validation-for="Kakei.Memo" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="新規作成" class="btn btn-primary" />
+                <input type="submit" value="新規作成"  />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
     <a asp-page="Index">家計簿に戻る</a>
 </div>

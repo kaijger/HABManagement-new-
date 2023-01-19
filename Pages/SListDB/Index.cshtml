@@ -5,16 +5,18 @@
     ViewData["Title"] = "買い物リスト";
 }
 
-<body style="background:#AFEEEE;">
+<body style="background:#d8e698;">
 </body>
 
 <h1>買物リスト</h1>
 
 <p>
-    <a asp-page="Create">新規作成</a>
+    <a class="btn text-white" style="background-color:#fafafa"asp-page="Create">
+        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#89c997">新規作成</font>
+    </a>
 </p>
-<hr width="100%" size="10" noshade="" color="#004970">
-<div style="background:#d5eded;">
+
+<div style="background:#c4e697;">
     <table class="table">
         <thead>
             <tr>
@@ -37,9 +39,15 @@
                     @Html.DisplayFor(modelItem => item.Memo)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">編集</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">詳細</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">削除</a>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-page="./Edit" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#89c997">編集</font>
+                        </a>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-page="./Details" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#89c997">詳細</font>
+                        </a>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-page="./Delete" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#89c997">削除</font>
+                        </a>
                 </td>
             </tr>
     }

@@ -19,7 +19,7 @@
     string datenow = string.Format("{0}-{1}-{2}", yr, mn, dt);
 }
 
-<body style="background:#AFEEEE;">
+<body style="background:#FEDCBD;">
 </body>
 
 <h1>支出</h1>
@@ -27,7 +27,7 @@
 <h4>家計簿</h4>
 <form action="Create2">
     <div class="form-group">
-        <input type="submit" value="収入画面へ" class="btn btn-primary" />
+        <input type="submit" value="収入画面へ"  />
     </div>
 </form>
 <hr />
@@ -68,13 +68,14 @@
                 <input asp-for="Kakei.Memo" class="form-control" />
                 <span asp-validation-for="Kakei.Memo" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="新規作成" class="btn btn-primary" />
+                <input type="submit" value="新規作成"  />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
     <a asp-page="Index">家計簿に戻る</a>
 </div>
