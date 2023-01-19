@@ -174,8 +174,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
+                    @{
+                        string str = String.Format("{0:#,0}", item.Price);
+                    }
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @Html.DisplayFor(modelItem => str)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Category)
