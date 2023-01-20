@@ -221,8 +221,9 @@
        asp-route-currentFilter="@Model.CurrentFilter"
        asp-route-sortOrder="@Model.sortOrder" 
        asp-route-SearchString="@Model.SearchString"
-       class="btn btn-primary @prevDisabled">
-        前ページ
+       class="btn text-white @prevDisabled"
+       style="background-color:#fafafa">
+        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">前ページ</font>
     </a>
     @Model.Kakei.PageIndex
     <a asp-page="./Index"
@@ -231,8 +232,7 @@
        asp-route-currentFilter="@Model.CurrentFilter"
        asp-route-sortOrder="@Model.sortOrder"
        asp-route-SearchString="@Model.SearchString"
-       class="btn btn-primary @nextDisabled">
-        次ページ
+       class="btn text-white @nextDisabled"
+       style="background-color:#fafafa">
+        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">次ページ</font>
     </a>
-</center>
-    
