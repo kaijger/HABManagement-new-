@@ -220,7 +220,7 @@
        class="btn btn-primary @prevDisabled">
         前ページ
     </a>
-    @Model.Kakei.PageIndex
+    @Model.Kakei.PageIndex / @Model.Kakei.TotalPages
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex + 1)"
