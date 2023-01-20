@@ -150,7 +150,7 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model)日付
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.DateSort" asp-route-SearchString="@HttpContext.Session.GetString("Item")">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.DateSort" asp-route-SearchString="@Model.SearchString">
                         ▲▼
                     </a>
                 </th>
@@ -213,6 +213,10 @@
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex - 1)"
        asp-route-currentFilter="@Model.CurrentFilter"
+       asp-route-sortOrder="@Model.DateSort" 
+       asp-route-SearchString="@Model.SearchString"
+       class="btn btn-primary @prevDisabled">
+        前ページ
        class="btn text-white @prevDisabled"
        style="background-color:#fafafa">
         <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">前ページ</font>
@@ -221,6 +225,10 @@
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex + 1)"
        asp-route-currentFilter="@Model.CurrentFilter"
+       asp-route-sortOrder="@Model.DateSort"
+       asp-route-SearchString="@Model.SearchString"
+       class="btn btn-primary @nextDisabled">
+        次ページ
        class="btn text-white @nextDisabled"
        style="background-color:#fafafa">
         <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">次ページ</font>
