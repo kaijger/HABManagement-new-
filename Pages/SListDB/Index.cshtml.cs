@@ -22,12 +22,24 @@ namespace HABManagement.Pages.SListDB
 
         public IList<SList> SList { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.SList != null)
+            IQueryable<SList> SListitem = from s in _context.SList
+                                       select s;
+            switch (sortOrder)
             {
-                SList = await _context.SList.ToListAsync();
+                case "Asc":
+                    SListitem = SListitem.OrderBy(s => s.Priority);
+                    break;
+                case "Desc":
+                    SListitem = SListitem.OrderByDescending(s => s.Priority);
+                    break;
+                default:
+                    SListitem = SListitem.OrderByDescending(s => s.Priority);
+                    break;
             }
+            SList = await SListitem.AsNoTracking().ToListAsync();
+
         }
     }
 }

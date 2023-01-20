@@ -36,10 +36,6 @@ namespace HABManagement.Pages.FoodDB
 
         public async Task OnGetAsync(string sortOrder)
         {
-            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
-            ExpiryDateSort = sortOrder == "ExpiryDate" ? "expirydate_desc" : "ExpiryDate";
-            NumSort = sortOrder == "Num" ? "num_desc" : "Num";
-
             IQueryable<Food> itemsIQ = from s in _context.Food
                                       select s;
             if (!string.IsNullOrEmpty(SearchString))
@@ -53,26 +49,26 @@ namespace HABManagement.Pages.FoodDB
 
             switch (sortOrder)
             {
-                case "Date":
+                case "DateAsc":
                     itemsIQ = itemsIQ.OrderBy(s => s.Date);
                     break;
-                case "date_desc":
+                case "DateDesc":
                     itemsIQ = itemsIQ.OrderByDescending(s => s.Date);
                     break;
-                case "ExpiryDate":
+                case "ExpiryDateAsc":
                     itemsIQ = itemsIQ.OrderBy(s => s.ExpiryDate);
                     break;
-                case "expirydate_desc":
+                case "ExpiryDateDesc":
                     itemsIQ = itemsIQ.OrderByDescending(s => s.ExpiryDate);
                     break;
-                case "Num":
+                case "NumAsc":
                     itemsIQ = itemsIQ.OrderBy(s => s.Num);
                     break;
-                case "num_desc":
+                case "NumDesc":
                     itemsIQ = itemsIQ.OrderByDescending(s => s.Num);
                     break;
                 default:
-                    itemsIQ = itemsIQ.OrderBy(s => s.Date);
+                    itemsIQ = itemsIQ.OrderByDescending(s => s.Date);
                     break;
             }
 

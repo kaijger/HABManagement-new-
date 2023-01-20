@@ -149,9 +149,12 @@
                     支出・収入
                 </th>
                 <th>
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateAsc" asp-route-SearchString="@Model.SearchString">
+                        ▲
+                    </a>
                     @Html.DisplayNameFor(model => model)日付
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="@Model.DateSort" asp-route-SearchString="@Model.SearchString">
-                        ▲▼
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateDesc" asp-route-SearchString="@Model.SearchString">
+                        ▼
                     </a>
                 </th>
                 <th>
@@ -175,8 +178,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
+                    @{
+                        string str = String.Format("{0:#,0}", item.Price);
+                    }
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @Html.DisplayFor(modelItem => str)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Category)
@@ -208,28 +214,25 @@
         var prevDisabled = !Model.Kakei.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.Kakei.HasNextPage ? "disabled" : "";
     }
-
+<center>
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex - 1)"
        asp-route-currentFilter="@Model.CurrentFilter"
-       asp-route-sortOrder="@Model.DateSort" 
+       asp-route-sortOrder="@Model.sortOrder" 
        asp-route-SearchString="@Model.SearchString"
        class="btn btn-primary @prevDisabled">
         前ページ
-       class="btn text-white @prevDisabled"
-       style="background-color:#fafafa">
-        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">前ページ</font>
     </a>
+    @Model.Kakei.PageIndex
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex + 1)"
        asp-route-currentFilter="@Model.CurrentFilter"
-       asp-route-sortOrder="@Model.DateSort"
+       asp-route-sortOrder="@Model.sortOrder"
        asp-route-SearchString="@Model.SearchString"
        class="btn btn-primary @nextDisabled">
         次ページ
-       class="btn text-white @nextDisabled"
-       style="background-color:#fafafa">
-        <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">次ページ</font>
     </a>
+</center>
+    

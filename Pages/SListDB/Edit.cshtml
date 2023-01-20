@@ -4,7 +4,31 @@
 @{
     ViewData["Title"] = "編集";
 }
+<head>
+    <style>
+        .stars span {
+            display: flex;
+            flex-direction: row-reverse; 
+            justify-content: flex-end; 
+        }
 
+        .stars input[type='radio'] {
+            display: none; 
+        }
+
+        .stars label {
+            color: whitesmoke;
+            font-size: 30px;
+            padding: 0 5px; 
+        }
+
+            .stars label:hover,
+            .stars label:hover ~ label,
+            .stars input[type='radio']:checked ~ label {
+                color: #e697c4; 
+            }
+    </style>
+</head>
 <body style="background:#c4e697;">
 </body>
 
@@ -26,6 +50,18 @@
                 <label asp-for="SList.Memo" class="control-label">メモ</label>
                 <input asp-for="SList.Memo" class="form-control" />
                 <span asp-validation-for="SList.Memo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SList.Priority" class="control-label">優先度</label>
+                <div class="stars">
+                    <span>
+                        <input id="review01" type="radio" asp-for="SList.Priority" value="5"><label for="review01">♥</label>
+                        <input id="review02" type="radio" asp-for="SList.Priority" value="4"><label for="review02">♥</label>
+                        <input id="review03" type="radio" asp-for="SList.Priority" value="3"><label for="review03">♥</label>
+                        <input id="review04" type="radio" asp-for="SList.Priority" value="2"><label for="review04">♥</label>
+                        <input id="review05" type="radio" asp-for="SList.Priority" value="1"><label for="review05">♥</label>
+                    </span>
+                </div>
             </div>
             <br />
             <div class="form-group">
