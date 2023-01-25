@@ -35,15 +35,9 @@ namespace HABManagement.Pages.KakeiDB
         public async Task OnGetAsync(string sortOrder,
             string currentFilter, string searchString, int? pageIndex)
         {
+
             CurrentSort = sortOrder;
-            if (searchString != null)
-            {
-                pageIndex = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
+            
             var kakeis = from m in _context.Kakei
                          select m;
             if (!string.IsNullOrEmpty(SearchString))

@@ -226,7 +226,7 @@
        style="background-color:#fafafa">
         <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">前ページ</font>
     </a>
-    @Model.Kakei.PageIndex
+    @Model.Kakei.PageIndex / @Model.Kakei.TotalPages
     <a asp-page="./Index"
        asp-route-sortOrder="@Model.CurrentSort"
        asp-route-pageIndex="@(Model.Kakei.PageIndex + 1)"
