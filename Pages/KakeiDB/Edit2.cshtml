@@ -8,10 +8,16 @@
 <body style="background:#FEDCBD;">
 </body>
 
-<h1>収入編集画面</h1>
+<h1>編集</h1>
 
 <h4>家計簿</h4>
 <hr />
+<a class="btn text-white" style="background-color:#fafafa">
+	<font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">収入</font>
+</a>
+<a class="btn btn-outline-light" asp-page="./Edit" asp-route-id="@Model.Kakei?.ID">
+	<font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">支出</font>
+</a>
 <div class="row">
 	<div class="col-md-4">
 		<form method="post">
@@ -54,7 +60,6 @@
 <br />
 <div>
     <a asp-page="./Index">家計簿に戻る</a>
-	<a asp-page="./Edit" asp-route-id="@Model.Kakei?.ID">支出編集へ</a>
 </div>
 
 @section Scripts {

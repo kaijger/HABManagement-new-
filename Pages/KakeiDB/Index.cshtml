@@ -191,12 +191,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Memo)
                 </td>
+                    @{
+                        string page1 = "";
+                        if (item.Balance == "収入") page1 = "./Edit2";
+                        else page1 = "./Edit";
+                    }
                 <td>
-                        <a class="btn text-white" style="background-color:#fafafa" asp-page="./Edit" asp-route-id="@item.ID">
-                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">支出編集</font>
-                        </a>
-                        <a class ="btn text-white" style="background-color:#fafafa" asp-page="./Edit2" asp-route-id="@item.ID">
-                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">収入編集</font>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-page="@page1" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">編集</font>
                         </a>
                         <a class="btn text-white" style="background-color:#fafafa"asp-page="./Details" asp-route-id="@item.ID">
                             <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">詳細</font>
