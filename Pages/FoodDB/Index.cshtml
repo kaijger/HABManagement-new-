@@ -35,29 +35,29 @@
                 @Html.DisplayNameFor(model => model)名前
             </th>
             <th>
-                 <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="NumAsc" asp-route-SearchString="@Model.SearchString">
+                 <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="NumDesc" asp-route-SearchString="@Model.SearchString">
                     ▲
                  </a>
                 @Html.DisplayNameFor(model => model)個数
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="NumDesc" asp-route-SearchString="@Model.SearchString">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="NumAsc" asp-route-SearchString="@Model.SearchString">
                     ▼
                 </a>
             </th>
             <th>
-                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateAsc" asp-route-SearchString="@Model.SearchString">
+                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateDesc" asp-route-SearchString="@Model.SearchString">
                     ▲
                 </a>
                 @Html.DisplayNameFor(model => model)日付
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateDesc"asp-route-SearchString="@Model.SearchString">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateAsc"asp-route-SearchString="@Model.SearchString">
                     ▼
                 </a>
             </th>
             <th>
-                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="ExpiryDateAsc" asp-route-SearchString="@Model.SearchString">
+                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="ExpiryDateDesc" asp-route-SearchString="@Model.SearchString">
                         ▲
                 </a>
                 @Html.DisplayNameFor(model => model)有効期限
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="ExpiryDateDesc" asp-route-SearchString="@Model.SearchString">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="ExpiryDateAsc" asp-route-SearchString="@Model.SearchString">
                     ▼
                 </a>
             </th>
