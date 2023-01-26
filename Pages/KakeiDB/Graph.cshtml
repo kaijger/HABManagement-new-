@@ -1,0 +1,59 @@
+﻿@page
+@model HABManagement.Pages.KakeiDB.GraphModel
+
+@{
+    ViewData["Title"] = "Graph";
+}
+
+<h1>Graph</h1>
+
+<h4>Kakei</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kakei.Balance" class="control-label"></label>
+                <input asp-for="Kakei.Balance" class="form-control" />
+                <span asp-validation-for="Kakei.Balance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kakei.Date" class="control-label"></label>
+                <input asp-for="Kakei.Date" class="form-control" />
+                <span asp-validation-for="Kakei.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kakei.Price" class="control-label"></label>
+                <input asp-for="Kakei.Price" class="form-control" />
+                <span asp-validation-for="Kakei.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kakei.Category" class="control-label"></label>
+                <input asp-for="Kakei.Category" class="form-control" />
+                <span asp-validation-for="Kakei.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kakei.Category2" class="control-label"></label>
+                <input asp-for="Kakei.Category2" class="form-control" />
+                <span asp-validation-for="Kakei.Category2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kakei.Memo" class="control-label"></label>
+                <input asp-for="Kakei.Memo" class="form-control" />
+                <span asp-validation-for="Kakei.Memo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

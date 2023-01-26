@@ -19,7 +19,7 @@
 <form>
     <p>
         名前: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="検索"  />
+        <input type="submit" value="検索" class="btn btn-light" style="color:#4169e1" />
         <a class="btn text-white" style="background-color:#fafafa" asp-page="./Index">
             <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#4169e1">リセット</font>
         </a>
@@ -35,29 +35,29 @@
                 @Html.DisplayNameFor(model => model)名前
             </th>
             <th>
-                 <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="NumAsc" asp-route-SearchString="@Model.SearchString">
+                 <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="NumDesc" asp-route-SearchString="@Model.SearchString">
                     ▲
                  </a>
                 @Html.DisplayNameFor(model => model)個数
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="NumDesc" asp-route-SearchString="@Model.SearchString">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="NumAsc" asp-route-SearchString="@Model.SearchString">
                     ▼
                 </a>
             </th>
             <th>
-                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateAsc" asp-route-SearchString="@Model.SearchString">
+                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateDesc" asp-route-SearchString="@Model.SearchString">
                     ▲
                 </a>
                 @Html.DisplayNameFor(model => model)日付
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateDesc"asp-route-SearchString="@Model.SearchString">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateAsc"asp-route-SearchString="@Model.SearchString">
                     ▼
                 </a>
             </th>
             <th>
-                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="ExpiryDateAsc" asp-route-SearchString="@Model.SearchString">
+                <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="ExpiryDateDesc" asp-route-SearchString="@Model.SearchString">
                         ▲
                 </a>
                 @Html.DisplayNameFor(model => model)有効期限
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="ExpiryDateDesc" asp-route-SearchString="@Model.SearchString">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="ExpiryDateAsc" asp-route-SearchString="@Model.SearchString">
                     ▼
                 </a>
             </th>

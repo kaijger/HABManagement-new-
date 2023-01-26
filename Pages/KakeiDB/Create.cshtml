@@ -22,15 +22,16 @@
 <body style="background:#FEDCBD;">
 </body>
 
-<h1>支出</h1>
+<h1>新規作成</h1>
 
 <h4>家計簿</h4>
-<form action="Create2">
-    <div class="form-group">
-        <input type="submit" value="収入画面へ"  />
-    </div>
-</form>
 <hr />
+<a class="btn btn-outline-light" asp-page="Create2">
+    <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">収入</font>
+</a>
+<a class=" btn text-white" style="background-color:#fafafa">
+    <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">支出</font>
+</a>
 <div class="row">
     <div class="col-md-4">
         <form method="post">
@@ -70,7 +71,7 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="新規作成"  />
+                <input type="submit" value="作成" class="btn btn-light" style="color:#c49a6a" />
             </div>
         </form>
     </div>

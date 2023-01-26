@@ -127,7 +127,8 @@
         <option value="支出">支出</option>
         <option value="収入">収入</option>
     </select>
-    <input type="submit" value="検索" />
+
+    <input type="submit" value="検索" class="btn btn-light" style="color:#c49a6a" />
     <a class="btn text-white" style="background-color:#fafafa" asp-page="./Index">
         <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">リセット</font>
     </a>
@@ -149,11 +150,11 @@
                     支出・収入
                 </th>
                 <th>
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateAsc" asp-route-SearchString="@Model.SearchString">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateDesk" asp-route-SearchString="@Model.SearchString">
                         ▲
                     </a>
                     @Html.DisplayNameFor(model => model)日付
-                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateDesc" asp-route-SearchString="@Model.SearchString">
+                    <a class="btn text-dark" style="background-color:whitesmoke" asp-page="./Index" asp-route-sortOrder="DateAsc" asp-route-SearchString="@Model.SearchString">
                         ▼
                     </a>
                 </th>
@@ -190,12 +191,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Memo)
                 </td>
+                    @{
+                        string page1 = "";
+                        if (item.Balance == "収入") page1 = "./Edit2";
+                        else page1 = "./Edit";
+                    }
                 <td>
-                        <a class="btn text-white" style="background-color:#fafafa" asp-page="./Edit" asp-route-id="@item.ID">
-                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">支出編集</font>
-                        </a>
-                        <a class ="btn text-white" style="background-color:#fafafa" asp-page="./Edit2" asp-route-id="@item.ID">
-                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">収入編集</font>
+                        <a class="btn text-white" style="background-color:#fafafa" asp-page="@page1" asp-route-id="@item.ID">
+                            <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">編集</font>
                         </a>
                         <a class="btn text-white" style="background-color:#fafafa"asp-page="./Details" asp-route-id="@item.ID">
                             <font face="ＭＳ Ｐゴシック,ＭＳ ゴシック" color="#c49a6a">詳細</font>
