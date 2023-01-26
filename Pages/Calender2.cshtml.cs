@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using HABManagement.Data;
 using HABManagement.Models;
 
-namespace HABManagement.Pages.KakeiDB
+namespace HABManagement.Pages
 {
-    public class testModel : PageModel
+    public class Calender2Model : PageModel
     {
         private readonly HABManagement.Data.HABManagementContext _context;
 
-        public testModel(HABManagement.Data.HABManagementContext context)
+        public Calender2Model(HABManagement.Data.HABManagementContext context)
         {
             _context = context;
         }
@@ -35,7 +35,7 @@ namespace HABManagement.Pages.KakeiDB
             {
                 return Page();
             }
-
+            
             _context.Kakei.Add(Kakei);
             await _context.SaveChangesAsync();
 
