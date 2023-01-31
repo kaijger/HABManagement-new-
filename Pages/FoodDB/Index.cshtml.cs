@@ -41,9 +41,7 @@ namespace HABManagement.Pages.FoodDB
             if (!string.IsNullOrEmpty(SearchString))
             {
                 HttpContext.Session.SetString(SessionKeyName, SearchString);
-                itemsIQ = from s in _context.Food
-                          where s.Name == SearchString
-                          select s;
+                itemsIQ = itemsIQ.Where(s=> s.Name.Contains(SearchString));
             }
 
 
